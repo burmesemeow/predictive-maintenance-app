@@ -1,10 +1,23 @@
 import streamlit as st
 import numpy as np
-from tensorflow.keras.models import load_model
 import matplotlib.pyplot as plt
+from tensorflow.keras.models import load_model
+import gdown
+import os
 
-model = load_model("cnn_lstm_model.h5", compile=False)
+# 🔧 Download model from Google Drive if not already present
+file_id = "1RjRlMBfF2Fx6Cp6DN5qxKhgoGX0G5JYX"  # your file ID
+url = f"https://drive.google.com/uc?id={file_id}"
+output = "cnn_lstm_model.h5"
 
+if not os.path.exists(output):
+    st.info("Downloading model from Google Drive...")
+    gdown.download(url, output, quiet=False)
+
+# 🔧 Load the model
+model = load_model(output, compile=False)
+
+# 🖥️ Streamlit UI
 st.title("🔧 Predictive Maintenance - RUL Dashboard")
 
 timesteps = 30
