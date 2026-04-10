@@ -1,4 +1,22 @@
+# Virtual environments
 tf_env/
+venv/
+.env/
+
+# Python cache
 __pycache__/
 *.pyc
-.ipynb_checkpoints/
+*.pyo
+*.pyd
+
+# DLLs and binaries
+*.dll
+*.so
+*.dylib
+
+# Logs
+*.log
+
+# System files
+.DS_Store
+Thumbs.db
